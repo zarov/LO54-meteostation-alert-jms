@@ -19,6 +19,12 @@
         <org.log4j.version>1.2.17</org.log4j.version>
         <org.hibernate.entitymanager.version>4.3.1.Final</org.hibernate.entitymanager.version>
         <org.hibernate.annotations.version>3.5.6-Final</org.hibernate.annotations.version>
-        
     </properties>
+    <dependencies>
+        <dependency>
+          <groupId>org.hibernate</groupId>
+          <artifactId>hibernate-annotations</artifactId>
+          <version>3.5.6-Final</version>
+        </dependency>
+  </dependencies> 
 </project>

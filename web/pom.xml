@@ -24,7 +24,7 @@
         <!--Application Core-->
         <dependency>
             <groupId>fr.utbm</groupId>
-            <artifactId>core</artifactId>
+            <artifactId>projet-core</artifactId>
             <version>1.0.0-SNAPSHOT</version>
         </dependency>
 

@@ -1,7 +1,15 @@
 package fr.utbm.core.entity;
 
-public class User {
+import java.io.Serializable;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import org.hibernate.annotations.Entity;
 
+@Entity
+public class User implements Serializable {
+    
+    
     private long id;
     private String username;
     private boolean enabled;
@@ -13,7 +21,9 @@ public class User {
     public void setUsername(String username) {
         this.username = username;
     }
-
+    
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     public long getId() {
         return id;
     }
