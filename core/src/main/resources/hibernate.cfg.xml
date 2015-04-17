@@ -26,5 +26,11 @@
         <mapping package="fr.utbm.core.entity"/>
         <mapping class="fr.utbm.core.entity.User"/>
         <mapping class="fr.utbm.core.entity.Trigger"/>
+        <mapping class="fr.utbm.core.entity.Temperature"/>
+        <mapping class="fr.utbm.core.entity.Station"/>
+        <mapping class="fr.utbm.core.entity.Sensor"/>
+        <mapping class="fr.utbm.core.entity.Area"/>
+        <mapping class="fr.utbm.core.entity.AlertHis"/>
+        <mapping class="fr.utbm.core.entity.Alert"/>
     </session-factory>
 </hibernate-configuration>
