@@ -2,37 +2,26 @@ package fr.utbm.core.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
-@Entity
-@Table(name = "station")
 public class Station implements Serializable {
 
 	private static final long serialVersionUID = 6132454940793990497L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "Sta_Id")
 	private int id;
-	@Column(name = "Sta_Label", length = 45)
 	private String label;
-	@JoinColumn(name = "Are_Id")
-	private int areaId;
-
-	@Column(name = "Sta_LastCom")
-	@Temporal(TemporalType.TIMESTAMP)
 	private Date lastCom;
-	@Column(name = "Sta_Valid")
 	private int valid;
+	private Set<Sensor> sensors;
+
+	public Station() {
+	}
+
+	public Station(String label, Date lastCom, int valid) {
+		this.label = label;
+		this.lastCom = lastCom;
+		this.valid = valid;
+	}
 
 	/**
 	 * @return the label
@@ -47,21 +36,6 @@ public class Station implements Serializable {
 	 */
 	public void setLabel(String label) {
 		this.label = label;
-	}
-
-	/**
-	 * @return the areaId
-	 */
-	public int getAreaId() {
-		return areaId;
-	}
-
-	/**
-	 * @param areaId
-	 *            the areaId to set
-	 */
-	public void setAreaId(int areaId) {
-		this.areaId = areaId;
 	}
 
 	/**
@@ -99,5 +73,20 @@ public class Station implements Serializable {
 	 */
 	public int getId() {
 		return id;
+	}
+
+	/**
+	 * @return the sensors
+	 */
+	public Set<Sensor> getSensors() {
+		return sensors;
+	}
+
+	/**
+	 * @param sensors
+	 *            the sensors to set
+	 */
+	public void setSensors(Set<Sensor> sensors) {
+		this.sensors = sensors;
 	}
 }

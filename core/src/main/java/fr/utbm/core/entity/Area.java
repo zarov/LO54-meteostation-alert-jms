@@ -1,28 +1,24 @@
 package fr.utbm.core.entity;
 
 import java.io.Serializable;
+import java.util.Set;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-@Entity
-@Table(name = "area")
 public class Area implements Serializable {
 
 	private static final long serialVersionUID = -3571500543876062353L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "Are_Id")
 	private int id;
-	@Column(name = "Are_Label", length = 45)
 	private String label;
-	@Column(name = "Are_Road", length = 45)
 	private String road;
+	private Set<Station> stations;
+
+	public Area() {
+	}
+
+	public Area(String label, String road) {
+		this.label = label;
+		this.road = road;
+	}
 
 	/**
 	 * @return the label
@@ -59,5 +55,20 @@ public class Area implements Serializable {
 	 */
 	public int getId() {
 		return id;
+	}
+
+	/**
+	 * @return the stations
+	 */
+	public Set<Station> getStations() {
+		return stations;
+	}
+
+	/**
+	 * @param stations
+	 *            the stations to set
+	 */
+	public void setStations(Set<Station> stations) {
+		this.stations = stations;
 	}
 }

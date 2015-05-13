@@ -1,0 +1,20 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+      "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+          "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="fr.utbm.core.entity">
+    <class name="Sensor" table="sensor">
+        <id name="id" type="int" column="Sen_Id">
+        	<generator class="native" />
+        </id>
+        <set name="temperatures" table="temperature" cascade="all">
+        	<key column="Sen_Id" />
+        	<one-to-many class="Temperature" />
+        </set>
+        <set name="triggers" table="trigger" cascade="all">
+        	<key column="Sen_Id" />
+        	<one-to-many class="Trigger" />
+        </set>
+        <property name="label" column="Sen_Label" type="string" not-null="true" />
+    </class>
+</hibernate-mapping>

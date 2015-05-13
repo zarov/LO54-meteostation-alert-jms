@@ -1,0 +1,18 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+      "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+          "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="fr.utbm.core.entity">
+    <class name="Station" table="station">
+        <id name="id" type="int" column="Sta_Id">
+        	<generator class="native" />
+        </id>
+        <set name="sensors" table="sensor" cascade="all">
+        	<key column="Sta_Id" />
+        	<one-to-many class="Sensor" />
+        </set>
+        <property name="label" column="Sen_Label" type="string" not-null="true" />
+        <property name="lastCom" column="Sta_LastCom" type="date" not-null="false" />
+        <property name="valid" column="Sta_Valid" type="int" not-null="true"></property>
+    </class>
+</hibernate-mapping>
