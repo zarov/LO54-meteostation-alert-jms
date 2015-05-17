@@ -1,6 +1,7 @@
 package fr.utbm.core.service;
 
 import java.util.Date;
+import java.util.List;
 
 import fr.utbm.core.dao.StationDao;
 import fr.utbm.core.entity.Station;
@@ -41,4 +42,9 @@ public class StationService {
 		StationDao dao = new StationDao();
 		dao.deleteStationById(id);
 	}
+	
+    public List<Station>getAllStations(){
+        StationDao dao = new StationDao();
+        return dao.getAllStations();
+    }
 }

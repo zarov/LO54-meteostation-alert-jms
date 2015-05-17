@@ -5,6 +5,8 @@ import org.hibernate.Session;
 
 import fr.utbm.core.entity.Station;
 import fr.utbm.core.tools.HibernateUtil;
+import java.util.List;
+import org.hibernate.Query;
 
 /**
  * @author zarov
@@ -73,5 +75,15 @@ public class StationDao {
 			}
 		}
 	}
+        
+        public List<Station>getAllStations(){
+            List<Station>res = null;
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            Query query = session.createQuery("from fr.utbm.core.entity.Station");
+            res = query.list();
+            session.close();
+            return res;    
+        }
 
 }

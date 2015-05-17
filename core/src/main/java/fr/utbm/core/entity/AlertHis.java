@@ -6,32 +6,25 @@
 package fr.utbm.core.entity;
 
 import java.util.Date;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.Table;
 
 /**
  *
  * @author Julien
  */
 
-@Entity
-@Table(name = "alerthis")
+//@Entity
+//@Table(name = "alerthis")
 public class AlertHis {
     
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "Alh_Id")
+    //@Id
+    //@GeneratedValue(strategy = GenerationType.AUTO)
+    //@Column(name = "Alh_Id")
     private int Id;
-    @Column(name = "Alh_Date")
+    //@Column(name = "Alh_Date")
     private Date date;
-    @Column(name = "Alh_State")
+    //@Column(name = "Alh_State")
     private boolean state;
-    @JoinColumn(name = "Trg_Id")
+    //@JoinColumn(name = "Trg_Id")
     private Trigger trigger;
 
     public int getId() {

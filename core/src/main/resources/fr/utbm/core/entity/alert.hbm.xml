@@ -1,0 +1,13 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+      "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+          "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="fr.utbm.core.entity">
+    <class name="Alert" table="alert">
+        <id name="id" column="Alr_code">
+            <generator class="increment"/>
+        </id>
+        <property name="label" column="Alr_Label" type="string" not-null="true" />
+        <property name="description" column="Alr_Description" type="string" not-null="true" />
+    </class>
+</hibernate-mapping>	

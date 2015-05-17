@@ -6,35 +6,29 @@
 package fr.utbm.core.entity;
 
 import java.io.Serializable;
-import javax.persistence.Entity;
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.Table;
+
 //import org.hibernate.annotations.Entity;
 
 /**
  *
  * @author Julien
  */
-@Entity
-@Table(name="trigger")
+//@Entity
+//@Table(name="trigger")
 public class Trigger implements Serializable  {
     
-    @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    //@Id
+    //@GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
-    @Column( name = "Trg_High")
+    //@Column( name = "Trg_High")
     private float trigHigh;
-    @Column( name = "Trg_Low")
+    //@Column( name = "Trg_Low")
     private float trigLow;
-    @Column( name = "Trg_Edge")
+    //@Column( name = "Trg_Edge")
     private int trigEdge;
-    @JoinColumn( name = "Alr_code")
+    //@JoinColumn( name = "Alr_code")
     private Alert alert;
-    @JoinColumn( name = "Sen_Id")
+    //@JoinColumn( name = "Sen_Id")
     private Sensor sensor;
      
     

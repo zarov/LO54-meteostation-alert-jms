@@ -1,0 +1,16 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+      "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+          "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="fr.utbm.core.entity">
+    <class name="Trigger" table="trigger">
+        <id name="id" column="Trg_Id">
+            <generator class="increment"/>
+        </id>
+        <property name="trigHigh" column="Trg_High" type="float" not-null="true" />
+        <property name="trigLow" column="Trg_Low" type="float" not-null="true" />
+        <property name="trigEdge" column="Trg_Edge" type="int" not-null="true" />
+        <many-to-one name="alert" column="Alr_code" cascade = "all"/>
+        <many-to-one name="sensor" column="Sen_Id" cascade = "all"/>
+    </class>
+</hibernate-mapping>	
