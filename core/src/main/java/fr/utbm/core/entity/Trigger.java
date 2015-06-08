@@ -17,6 +17,8 @@ import java.io.Serializable;
 //@Table(name="trigger")
 public class Trigger implements Serializable  {
     
+    private static final long serialVersionUID = 1L;
+    
     //@Id
     //@GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
@@ -25,7 +27,7 @@ public class Trigger implements Serializable  {
     //@Column( name = "Trg_Low")
     private float trigLow;
     //@Column( name = "Trg_Edge")
-    private int trigEdge;
+    private byte trigEdge;
     //@JoinColumn( name = "Alr_code")
     private Alert alert;
     //@JoinColumn( name = "Sen_Id")
@@ -56,11 +58,11 @@ public class Trigger implements Serializable  {
         this.trigLow = trigLow;
     }
 
-    public int getTrigEdge() {
+    public byte getTrigEdge() {
         return trigEdge;
     }
 
-    public void setTrigEdge(int trigEdge) {
+    public void setTrigEdge(byte trigEdge) {
         this.trigEdge = trigEdge;
     }
 

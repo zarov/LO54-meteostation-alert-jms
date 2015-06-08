@@ -5,6 +5,8 @@ import org.hibernate.Session;
 
 import fr.utbm.core.entity.Sensor;
 import fr.utbm.core.tools.HibernateUtil;
+import java.util.List;
+import org.hibernate.Query;
 
 /**
  * @author zarov
@@ -19,7 +21,7 @@ public class SensorDao {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		try {
 			session.beginTransaction();
-			session.persist(s);
+			session.saveOrUpdate(s);
 			session.getTransaction().commit();
 		} catch (HibernateException he) {
 			he.printStackTrace();
@@ -73,5 +75,15 @@ public class SensorDao {
 			}
 		}
 	}
+
+    public List<Sensor> getAllSensorFromSationId(int id) {
+            List<Sensor>res = null;
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            Query query = session.createQuery("from fr.utbm.core.entity.Sensor s where s.station.id = :id").setParameter("id", id);
+            res = query.list();
+            session.close();
+            return res;  
+    }
 
 }

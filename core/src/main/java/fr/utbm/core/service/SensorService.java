@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import fr.utbm.core.dao.SensorDao;
 import fr.utbm.core.entity.Sensor;
 import fr.utbm.core.entity.Station;
+import java.util.List;
 
 /**
  * @author zarov
@@ -18,19 +19,19 @@ public class SensorService {
 		dao.addSensor(s);
 	}
 
-	public void addSensor(String label, int stationId) {
+	/*public void addSensor(String label, int stationId) {
 		Sensor s = new Sensor();
 		s.setLabel(label);
 		s.setStationId(stationId);
 		addSensor(s);
-	}
+	}*/
 
-	public void addSensor(String label, Station station) {
+	/*public void addSensor(String label, Station station) {
 		Sensor s = new Sensor();
 		s.setLabel(label);
 		s.setStationId(station.getId());
 		addSensor(s);
-	}
+	}*/
 
 	public Sensor getSensorById(int id) {
 		SensorDao dao = new SensorDao();
@@ -41,4 +42,9 @@ public class SensorService {
 		SensorDao dao = new SensorDao();
 		dao.deleteSensorById(id);
 	}
+
+    public List<Sensor> getAllSensorFromSationId(int id) {
+        SensorDao dao = new SensorDao();
+        return dao.getAllSensorFromSationId(id);
+    }
 }

@@ -2,26 +2,18 @@ package fr.utbm.core.entity;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.Set;
 
+//@Entity
+//@Table(name = "station")
 public class Station implements Serializable {
 
 	private static final long serialVersionUID = 6132454940793990497L;
 
 	private int id;
 	private String label;
+	private Area area;
 	private Date lastCom;
-	private int valid;
-	private Set<Sensor> sensors;
-
-	public Station() {
-	}
-
-	public Station(String label, Date lastCom, int valid) {
-		this.label = label;
-		this.lastCom = lastCom;
-		this.valid = valid;
-	}
+	private boolean valid;
 
 	/**
 	 * @return the label
@@ -36,6 +28,21 @@ public class Station implements Serializable {
 	 */
 	public void setLabel(String label) {
 		this.label = label;
+	}
+
+	/**
+	 * @return the area
+	 */
+	public Area getArea() {
+		return area;
+	}
+
+	/**
+	 * @param areaId
+	 *            the areaId to set
+	 */
+	public void setArea(Area area) {
+		this.area = area;
 	}
 
 	/**
@@ -54,19 +61,16 @@ public class Station implements Serializable {
 	}
 
 	/**
-	 * @return the valid
-	 */
-	public int getValid() {
-		return valid;
-	}
-
-	/**
 	 * @param valid
 	 *            the valid to set
 	 */
-	public void setValid(int valid) {
+	public void setValid(boolean valid) {
 		this.valid = valid;
 	}
+        
+        public boolean isValid() {
+            return valid;
+        }
 
 	/**
 	 * @return the id
@@ -74,19 +78,8 @@ public class Station implements Serializable {
 	public int getId() {
 		return id;
 	}
-
-	/**
-	 * @return the sensors
-	 */
-	public Set<Sensor> getSensors() {
-		return sensors;
-	}
-
-	/**
-	 * @param sensors
-	 *            the sensors to set
-	 */
-	public void setSensors(Set<Sensor> sensors) {
-		this.sensors = sensors;
-	}
+        
+        public void setId(int id) {
+            this.id = id;
+        }
 }

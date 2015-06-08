@@ -5,7 +5,7 @@
 <hibernate-mapping package="fr.utbm.core.entity">
     <class name="Alert" table="alert">
         <id name="id" column="Alr_code">
-            <generator class="increment"/>
+            <generator class="assigned"/>
         </id>
         <property name="label" column="Alr_Label" type="string" not-null="true" />
         <property name="description" column="Alr_Description" type="string" not-null="true" />

@@ -8,8 +8,10 @@ package fr.utbm.core.dao;
 import fr.utbm.core.entity.Alert;
 import fr.utbm.core.entity.Trigger;
 import fr.utbm.core.tools.HibernateUtil;
+import java.util.List;
 import org.hibernate.Hibernate;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 
 /**
@@ -39,7 +41,7 @@ public class AlertDao {
         }
     }
     
-    public Alert getAlertById(int id){
+    public Alert getAlertById(String id){
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         Alert a = (Alert)session.get(Alert.class,id);
@@ -47,7 +49,7 @@ public class AlertDao {
         return a;
     }
     
-    public void deleteAlertById(int id){
+    public void deleteAlertById(String id){
         Session session = HibernateUtil.getSessionFactory().openSession();
         try{
             session.beginTransaction();
@@ -68,5 +70,15 @@ public class AlertDao {
                 session.close();
             }
         }
+    }
+
+    public List<Alert> getAllAlerts() {
+        List<Alert>res = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        Query query = session.createQuery("from fr.utbm.core.entity.Alert");
+        res = query.list();
+        session.close();
+        return res;   
     }
 }

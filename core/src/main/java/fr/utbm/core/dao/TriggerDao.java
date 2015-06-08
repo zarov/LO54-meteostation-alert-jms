@@ -7,8 +7,10 @@ package fr.utbm.core.dao;
 
 import fr.utbm.core.entity.Trigger;
 import fr.utbm.core.tools.HibernateUtil;
+import java.util.List;
 import org.hibernate.Hibernate;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 
 /**
@@ -20,7 +22,7 @@ public class TriggerDao {
         Session session = HibernateUtil.getSessionFactory().openSession();
         try{
             session.beginTransaction();
-            session.persist(t);
+            session.saveOrUpdate(t);
             session.getTransaction().commit();
         }
         catch (HibernateException he) {
@@ -53,6 +55,8 @@ public class TriggerDao {
         try{
             session.beginTransaction();
             Trigger t = (Trigger)session.get(Trigger.class,id);
+            Hibernate.initialize(t.getAlert());                        
+            Hibernate.initialize(t.getSensor());
             session.delete(t);
             session.getTransaction().commit();
         }
@@ -69,5 +73,26 @@ public class TriggerDao {
                 session.close();
             }
         }
+    }
+    
+   public List<Trigger>getAllTriggers(){
+            List<Trigger>res = null;
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            Query query = session.createQuery("from fr.utbm.core.entity.Trigger");
+            res = query.list();
+            System.out.println(res.size());
+            session.close();
+            return res;    
+        }
+
+    public List<Trigger> getAllTriggersFromSensorId(int id) {
+        List<Trigger>res = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        Query query = session.createQuery("from fr.utbm.core.entity.Trigger s where s.sensor.id = :id").setParameter("id", id);
+        res = query.list();
+        session.close();
+        return res;  
     }
 }

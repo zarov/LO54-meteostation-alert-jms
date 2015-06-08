@@ -7,7 +7,7 @@
         <id name="id" type="int" column="Tmp_Id">
         	<generator class="native" />
         </id>
-        <property name="value" column="Tmp_Value" type="string" not-null="true" />
+        <property name="value" column="Tmp_Value" type="float" not-null="true" />
         <property name="date" column="Tmp_Date" type="date" not-null="true" />
     </class>
 </hibernate-mapping>	

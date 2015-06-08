@@ -8,6 +8,7 @@ package fr.utbm.core.service;
 import fr.utbm.core.dao.TriggerDao;
 import fr.utbm.core.dao.UserDao;
 import fr.utbm.core.entity.Trigger;
+import java.util.List;
 
 /**
  *
@@ -27,5 +28,15 @@ public class TriggerService {
         public void deleteTrigger(int id){
             TriggerDao d = new TriggerDao();
             d.deleteTriggerById(id);
+        }
+        
+        public List<Trigger>getAllTriggers(){
+            TriggerDao dao = new TriggerDao();
+            return dao.getAllTriggers();
+        }
+
+        public List<Trigger> getAllTriggersFromSensorId(int id) {
+            TriggerDao dao = new TriggerDao();
+            return dao.getAllTriggersFromSensorId(id);
         }
 }

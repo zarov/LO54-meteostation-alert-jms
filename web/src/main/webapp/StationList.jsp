@@ -17,7 +17,7 @@
             <ul>
                 <c:forEach items="${stations}" var="station">
                     <li>${station.label}
-                        <a href="/backoffice/station?id=${station.id}">détails</a>
+                        <a href="/projet/SensorListServlet?id=${station.id}">Display sensors</a>
                     </li>
                 </c:forEach>    
             </ul>

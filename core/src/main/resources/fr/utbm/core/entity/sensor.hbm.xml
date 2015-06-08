@@ -15,6 +15,7 @@
         	<key column="Sen_Id" />
         	<one-to-many class="Trigger" />
         </set>
+        <many-to-one name="station" column="Sta_Id" cascade = "all"/>
         <property name="label" column="Sen_Label" type="string" not-null="true" />
     </class>
 </hibernate-mapping>

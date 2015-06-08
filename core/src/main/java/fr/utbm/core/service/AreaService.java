@@ -1,6 +1,5 @@
 package fr.utbm.core.service;
 
-import org.springframework.stereotype.Service;
 
 import fr.utbm.core.dao.AreaDao;
 import fr.utbm.core.entity.Area;
@@ -9,7 +8,6 @@ import fr.utbm.core.entity.Area;
  * @author zarov
  * @package fr.utbm.core.service
  */
-@Service
 public class AreaService {
 	public void addArea(Area a) {
 		AreaDao dao = new AreaDao();

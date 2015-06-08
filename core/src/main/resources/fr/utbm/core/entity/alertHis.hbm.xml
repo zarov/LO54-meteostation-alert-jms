@@ -7,7 +7,7 @@
         <id name="id" column="Alh_id">
             <generator class="increment"/>
         </id>
-        <property name="date" column="Alh_Date" type="Date" not-null="true" />
+        <property name="date" column="Alh_Date" type="date" not-null="true" />
         <property name="state" column="Alh_State" type="boolean" not-null="true" />
         <many-to-one name="trigger" column="Trg_Id" cascade = "all"/>
 

@@ -12,6 +12,7 @@ public class Sensor implements Serializable {
 
 	private Set<Temperature> temperatures;
 	private Set<Trigger> triggers;
+    private Station station;
 
 	public Sensor() {
 	}
@@ -42,6 +43,12 @@ public class Sensor implements Serializable {
 		return id;
 	}
 
+        public void setId(int id) {
+            this.id = id;
+        }
+
+        
+
 	/**
 	 * @return the temperatures
 	 */
@@ -71,4 +78,14 @@ public class Sensor implements Serializable {
 	public void setTriggers(Set<Trigger> triggers) {
 		this.triggers = triggers;
 	}
+
+        public Station getStation() {
+            return station;
+        }
+
+        public void setStation(Station station) {
+            this.station = station;
+        }
+        
+        
 }

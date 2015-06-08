@@ -4,15 +4,13 @@
 
 <hibernate-mapping package="fr.utbm.core.entity">
     <class name="Station" table="station">
-        <id name="id" type="int" column="Sta_Id">
-        	<generator class="native" />
+        <id name="id" column="Sta_Id">
+            <generator class="increment"/>
         </id>
-        <set name="sensors" table="sensor" cascade="all">
-        	<key column="Sta_Id" />
-        	<one-to-many class="Sensor" />
-        </set>
-        <property name="label" column="Sen_Label" type="string" not-null="true" />
-        <property name="lastCom" column="Sta_LastCom" type="date" not-null="false" />
-        <property name="valid" column="Sta_Valid" type="int" not-null="true"></property>
+        <property name="label" column="Sta_Label" type="string" not-null="true" />
+        <property name="lastCom" column="Sta_LastCom" type="date" not-null="true" />
+        <property name="valid" column="Sta_Valid" type="boolean" not-null="true" />
+        <many-to-one name="area" column="Are_Id" cascade = "all"/>
+
     </class>
-</hibernate-mapping>
+</hibernate-mapping>	

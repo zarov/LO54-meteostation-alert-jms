@@ -10,6 +10,7 @@ import fr.utbm.core.dao.TriggerDao;
 import fr.utbm.core.dao.UserDao;
 import fr.utbm.core.entity.Alert;
 import fr.utbm.core.entity.Trigger;
+import java.util.List;
 
 /**
  *
@@ -21,13 +22,18 @@ public class AlertService {
             d.registerAlert(a);
 	}
         
-        public Alert getAlert(int id){
+        public Alert getAlert(String id){
             AlertDao d = new AlertDao();
             return d.getAlertById(id);
         }
         
-        public void deleteAlert(int id){
+        public void deleteAlert(String id){
             AlertDao d = new AlertDao();
             d.deleteAlertById(id);
+        }
+
+        public List<Alert> getAllAlerts() {
+            AlertDao d = new AlertDao();
+            return d.getAllAlerts();
         }
 }
