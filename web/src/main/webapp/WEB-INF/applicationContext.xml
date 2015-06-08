@@ -60,5 +60,7 @@
 
     <!-- Annotation for Transaction manager -->
     <tx:annotation-driven transaction-manager="transactionManager" />
-      
+  
+    <!-- Load Quartz daemon -->
+    <import resource="classpath:jms-trigger-quartz.xml" />
 </beans>    
