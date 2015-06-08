@@ -61,7 +61,4 @@ public class Temperature implements Serializable {
             this.id = id;
         }
         
-        
-        
-        
 }

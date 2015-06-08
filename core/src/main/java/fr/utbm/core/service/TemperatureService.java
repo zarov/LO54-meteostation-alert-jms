@@ -18,7 +18,7 @@ public class TemperatureService {
 	public void addTemperature(float value, int sensorId) {
 		Temperature t = new Temperature();
 		t.setValue(value);
-		t.setSensorId(sensorId);
+		t.setId(sensorId);
 		t.setDate(new Date());
 		addTemperature(t);
 	}
@@ -26,7 +26,7 @@ public class TemperatureService {
 	public void addTemperature(float value, int sensorId, Date date) {
 		Temperature t = new Temperature();
 		t.setValue(value);
-		t.setSensorId(sensorId);
+		t.setId(sensorId);
 		t.setDate(date);
 		addTemperature(t);
 	}
