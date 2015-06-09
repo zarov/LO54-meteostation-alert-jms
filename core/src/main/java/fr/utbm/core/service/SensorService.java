@@ -43,7 +43,7 @@ public class SensorService {
 		dao.deleteSensorById(id);
 	}
 
-    public List<Sensor> getAllSensorFromSationId(int id) {
+    public List<Sensor> getAllSensorFromStationId(int id) {
         SensorDao dao = new SensorDao();
         return dao.getAllSensorFromSationId(id);
     }

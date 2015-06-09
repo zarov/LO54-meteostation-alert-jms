@@ -4,13 +4,9 @@
 
 <hibernate-mapping package="fr.utbm.core.entity">
     <class name="Area" table="area">
-        <id name="id" type="int" column="Are_Id">
-        	<generator class="native" />
+        <id name="id" column="Are_id">
+            <generator class="increment"/>
         </id>
-        <set name="stations" table="station" cascade="all">
-        	<key column="Are_Id" />
-        	<one-to-many class="Station" />
-        </set>
         <property name="label" column="Are_Label" type="string" not-null="true" />
         <property name="road" column="Are_Road" type="string" not-null="true" />
     </class>

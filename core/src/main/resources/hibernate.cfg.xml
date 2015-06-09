@@ -22,10 +22,13 @@
         <!-- Drop and re-create the database schema on startup -->
         <property name="hbm2ddl.auto">create</property>
         <!-- Object Mapping files -->
-        <mapping resource="fr/utbm/core/entity/area.hbm.xml"/>
-        <mapping resource="fr/utbm/core/entity/sensor.hbm.xml"/>
-        <mapping resource="fr/utbm/core/entity/station.hbm.xml"/>
-        <mapping resource="fr/utbm/core/entity/temperature.hbm.xml"/>
         <mapping resource="fr/utbm/core/entity/user.hbm.xml"/>
+        <mapping resource="fr/utbm/core/entity/alert.hbm.xml"/>
+        <mapping resource="fr/utbm/core/entity/alertHis.hbm.xml"/>
+        <mapping resource="fr/utbm/core/entity/area.hbm.xml"/>
+        <mapping resource="fr/utbm/core/entity/station.hbm.xml"/>
+        <mapping resource="fr/utbm/core/entity/sensor.hbm.xml"/>
+        <mapping resource="fr/utbm/core/entity/temperature.hbm.xml"/>
+        <mapping resource="fr/utbm/core/entity/trigger.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>
