@@ -1,5 +1,7 @@
-package fr.utbm.service;
+package fr.utbm.core.service;
 
+import fr.utbm.core.entity.Station;
+import java.util.List;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -7,7 +9,7 @@ import junit.framework.TestSuite;
 /**
  * Unit test for simple App.
  */
-public class UserServiceTest
+public class StationServiceTest
         extends TestCase {
 
     /**
@@ -15,7 +17,7 @@ public class UserServiceTest
      *
      * @param testName name of the test case
      */
-    public UserServiceTest(String testName) {
+    public StationServiceTest(String testName) {
         super(testName);
     }
 
@@ -23,13 +25,12 @@ public class UserServiceTest
      * @return the suite of tests being tested
      */
     public static Test suite() {
-        return new TestSuite(UserServiceTest.class);
+        return new TestSuite(StationServiceTest.class);
     }
-
-    /**
-     * Rigourous Test :-)
-     */
-    public void testCreateUser() {
-        assertTrue(true);
+    
+    public void testGetStations(){
+       StationService ss = new StationService();
+       List<Station> res = ss.getAllStations();
+        assertTrue(res instanceof List);
     }
 }

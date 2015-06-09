@@ -11,6 +11,6 @@
         <property name="trigLow" column="Trg_Low" type="float" not-null="true" />
         <property name="trigEdge" column="Trg_Edge" type="byte" not-null="true" />
         <many-to-one name="alert" column="Alr_code"/>
-        <many-to-one name="sensor" column="Sen_Id" cascade = "all"/>
+        <many-to-one name="sensor" column="Sen_Id" />
     </class>
 </hibernate-mapping>	
