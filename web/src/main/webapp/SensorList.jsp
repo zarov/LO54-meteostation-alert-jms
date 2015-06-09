@@ -22,5 +22,7 @@
                     </li>
                 </c:forEach>    
             </ul>
+        <br>
+        <a href="/projet/StationListServlet">Return to stations</a>
     </body>
 </html>

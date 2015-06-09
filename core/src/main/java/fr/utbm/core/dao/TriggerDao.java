@@ -55,8 +55,6 @@ public class TriggerDao {
         try{
             session.beginTransaction();
             Trigger t = (Trigger)session.get(Trigger.class,id);
-            Hibernate.initialize(t.getAlert());                        
-            Hibernate.initialize(t.getSensor());
             session.delete(t);
             session.getTransaction().commit();
         }

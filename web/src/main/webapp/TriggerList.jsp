@@ -26,5 +26,7 @@
             </ul>
         </c:forEach>
         <a href="/projet/AddTriggerFormServlet?sensorId=${triggers[0].sensor.id}">Add a new Trigger to this sensor</a>
+        <br>
+        <a href="/projet/StationListServlet">Return to stations</a>
     </body>
 </html>
