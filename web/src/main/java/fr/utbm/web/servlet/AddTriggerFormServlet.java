@@ -42,7 +42,7 @@ public class AddTriggerFormServlet extends HttpServlet {
         List<Alert>alerts = as.getAllAlerts();
         request.setAttribute("sensorId", sensorId);
         request.setAttribute("alerts", alerts);
-        RequestDispatcher dis=request.getRequestDispatcher("addTrigerForm.jsp");
+        RequestDispatcher dis=request.getRequestDispatcher("addTriggerForm.jsp");
         dis.forward(request,response);
     }
 
