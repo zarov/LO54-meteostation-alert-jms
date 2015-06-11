@@ -1,12 +1,11 @@
 package fr.utbm.core.dao;
 
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
-
 import fr.utbm.core.entity.Station;
 import fr.utbm.core.tools.HibernateUtil;
 import java.util.List;
+import org.hibernate.HibernateException;
 import org.hibernate.Query;
+import org.hibernate.Session;
 
 /**
  * @author zarov
@@ -84,6 +83,15 @@ public class StationDao {
             res = query.list();
             session.close();
             return res;    
+        }
+
+        public List<Station> getAllStationsByAreaId(int id) {
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            Query query = session.createQuery("from fr.utbm.core.entity.Station s where s.area.id =:id").setParameter("id", id);
+            List<Station> res = query.list();
+            session.close();
+            return res;
         }
 
 }

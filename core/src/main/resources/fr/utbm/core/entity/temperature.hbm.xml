@@ -9,5 +9,6 @@
         </id>
         <property name="value" column="Tmp_Value" type="float" not-null="true" />
         <property name="date" column="Tmp_Date" type="date" not-null="true" />
+        <many-to-one name="sensor" column="Sen_Id" cascade="all"/>
     </class>
 </hibernate-mapping>	

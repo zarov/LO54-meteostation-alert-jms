@@ -1,9 +1,8 @@
 package fr.utbm.core.service;
 
-import java.util.Date;
-
 import fr.utbm.core.dao.TemperatureDao;
 import fr.utbm.core.entity.Temperature;
+import java.util.Date;
 
 /**
  * @author zarov
@@ -40,4 +39,9 @@ public class TemperatureService {
 		TemperatureDao dao = new TemperatureDao();
 		dao.deleteTemperatureById(id);
 	}
+        
+        public Temperature getLastTemperatureBySensorId(int id) {
+                TemperatureDao dao = new TemperatureDao();
+                return dao.getLastTemperatureBySensorId(id);
+        }
 }

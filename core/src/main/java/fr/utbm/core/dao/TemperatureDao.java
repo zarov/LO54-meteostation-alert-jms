@@ -1,10 +1,10 @@
 package fr.utbm.core.dao;
 
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
-
 import fr.utbm.core.entity.Temperature;
 import fr.utbm.core.tools.HibernateUtil;
+import org.hibernate.HibernateException;
+import org.hibernate.Query;
+import org.hibernate.Session;
 
 /**
  * @author zarov
@@ -74,5 +74,15 @@ public class TemperatureDao {
 			}
 		}
 	}
+        
+        public Temperature getLastTemperatureBySensorId(int id) {
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            Query query = session.createQuery("from fr.utbm.core.entity.Temperature t where t.sensor.id = :id order by t.date desc").setParameter("id", id);
+            query.setMaxResults(1);
+            Temperature t = (Temperature) query.uniqueResult();
+            session.close();
+            return t;
+        }
 
 }

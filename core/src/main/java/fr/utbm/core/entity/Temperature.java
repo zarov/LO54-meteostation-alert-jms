@@ -9,8 +9,10 @@ public class Temperature implements Serializable {
 
 	private int id;
 	private float value;
-
+        
 	private Date date;
+        
+        private Sensor sensor;
 
 	public Temperature() {
 	}
@@ -61,4 +63,11 @@ public class Temperature implements Serializable {
             this.id = id;
         }
         
+        public Sensor getSensor() {
+            return sensor;
+        }
+
+        public void setSensor(Sensor sensor) {
+            this.sensor = sensor;
+        }
 }

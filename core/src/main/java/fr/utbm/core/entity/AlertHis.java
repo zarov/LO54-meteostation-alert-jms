@@ -26,6 +26,13 @@ public class AlertHis {
     private boolean state;
     //@JoinColumn(name = "Trg_Id")
     private Trigger trigger;
+    
+    public AlertHis() {}
+    public AlertHis(Date date, boolean state, Trigger trigger) {
+        this.date = date;
+        this.state = state;
+        this.trigger = trigger;
+    }
 
     public int getId() {
         return Id;

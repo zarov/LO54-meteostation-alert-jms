@@ -6,7 +6,6 @@
 package fr.utbm.core.service;
 
 import fr.utbm.core.dao.TriggerDao;
-import fr.utbm.core.dao.UserDao;
 import fr.utbm.core.entity.Trigger;
 import java.util.List;
 

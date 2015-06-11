@@ -1,10 +1,9 @@
 package fr.utbm.core.service;
 
-import java.util.Date;
-
 import fr.utbm.core.dao.StationDao;
 import fr.utbm.core.entity.Area;
 import fr.utbm.core.entity.Station;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -47,5 +46,10 @@ public class StationService {
         public List<Station>getAllStations(){
             StationDao dao = new StationDao();
             return dao.getAllStations();
+        }
+
+        public List<Station> getAllStationsByAreaId(int id) {
+            StationDao dao = new StationDao();
+            return dao.getAllStationsByAreaId(id);
         }
 }

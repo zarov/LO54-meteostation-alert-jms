@@ -7,7 +7,6 @@ package fr.utbm.core.dao;
 
 import fr.utbm.core.entity.Alert;
 import fr.utbm.core.entity.AlertHis;
-import fr.utbm.core.entity.Trigger;
 import fr.utbm.core.tools.HibernateUtil;
 import org.hibernate.Hibernate;
 import org.hibernate.HibernateException;
@@ -22,7 +21,7 @@ public class AlertHisDao {
         Session session = HibernateUtil.getSessionFactory().openSession();
         try{
             session.beginTransaction();
-            session.persist(a);
+            session.saveOrUpdate(a);
             session.getTransaction().commit();
         }
         catch (HibernateException he) {
