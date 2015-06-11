@@ -7,9 +7,12 @@ package fr.utbm.core.dao;
 
 import fr.utbm.core.entity.Alert;
 import fr.utbm.core.entity.AlertHis;
+import fr.utbm.core.entity.Station;
 import fr.utbm.core.tools.HibernateUtil;
+import java.util.List;
 import org.hibernate.Hibernate;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 
 /**
@@ -69,5 +72,15 @@ public class AlertHisDao {
                 session.close();
             }
         }
+    }
+
+    public List<AlertHis> getAllAlertHis() {
+        List<AlertHis>res = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        Query query = session.createQuery("from fr.utbm.core.entity.AlertHis");
+        res = query.list();
+        session.close();
+        return res; 
     }
 }

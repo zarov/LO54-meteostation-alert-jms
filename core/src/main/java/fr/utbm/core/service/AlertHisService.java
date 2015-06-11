@@ -12,6 +12,7 @@ import fr.utbm.core.dao.UserDao;
 import fr.utbm.core.entity.Alert;
 import fr.utbm.core.entity.AlertHis;
 import fr.utbm.core.entity.Trigger;
+import java.util.List;
 
 /**
  *
@@ -31,5 +32,10 @@ public class AlertHisService {
         public void deleteAlertHis(int id){
             AlertHisDao d = new AlertHisDao();
             d.deleteAlertHisById(id);
+        }
+
+        public List<AlertHis> getAllAlertHis() {
+            AlertHisDao d = new AlertHisDao();
+            return d.getAllAlertHis();
         }
 }

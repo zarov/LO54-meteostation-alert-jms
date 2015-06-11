@@ -5,6 +5,7 @@
 --%>
 <%@ taglib prefix="c" 
            uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://efsavage.com/twitter-bootstrap" prefix="bs" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -21,5 +22,7 @@
                     </li>
                 </c:forEach>    
             </ul>
+        <br>
+        <a href="/projet/AlertHisListServlet">See alerts historic</a>
     </body>
 </html>

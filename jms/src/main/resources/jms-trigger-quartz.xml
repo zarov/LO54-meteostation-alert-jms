@@ -20,13 +20,13 @@
     <!-- Annotations for service, dao, component, message -->
     <context:component-scan base-package="fr.utbm" />
     
-    <!-- Reference to core class -->
+    <!-- Reference to core class 
     <bean id="station" class="java.lang.Class" factory-method="forName">
         <constructor-arg value="fr.utbm.core.entity.Station" />
     </bean>
     <bean id="area" class="java.lang.Class" factory-method="forName">
         <constructor-arg value="fr.utbm.core.entity.Area" />
-    </bean>
+    </bean>-->
     
     <!-- Checking for all triggers (default method) -->
     <bean id="temperatureSimpleTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
@@ -40,10 +40,10 @@
     </bean>
     
     <!-- Check for Belfort station only, every 5min -->
-    <bean id="temperatureBelfortSimpleTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
+    <!--<bean id="temperatureBelfortSimpleTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
         <property name="jobDetail" ref="temperatureBelfortJobDetail" />    
-        <property name="startDelay" value="1000" /> <!-- Start 1min after startup -->  
-        <property name="repeatInterval" value="2000" /> <!-- and check every 2min -->
+        <property name="startDelay" value="1000" />  
+        <property name="repeatInterval" value="2000" /> 
     </bean>
     <bean id="temperatureBelfortJobDetail" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
         <property name="jobClass" ref="triggerCheck" />
@@ -53,20 +53,20 @@
                 <entry key="id" value="1" />
             </map>
         </property>
-    </bean>
+    </bean>-->
     
     <!-- The running jobs -->
     <bean id="scheduler" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
         <property name="jobDetails">
             <list>
                 <ref bean="temperatureJobDetail" />
-                <ref bean="temperatureBelfortJobDetail" />
+                <!--<ref bean="temperatureBelfortJobDetail" />-->
             </list>
         </property>
         <property name="triggers">
             <list>
                 <ref bean="temperatureSimpleTrigger" />
-                <ref bean="temperatureBelfortSimpleTrigger" />
+              <!-- <ref bean="temperatureBelfortSimpleTrigger" />-->
             </list>
         </property>
     </bean>
