@@ -6,11 +6,9 @@
 package fr.utbm.web.servlet;
 
 import fr.utbm.core.entity.Sensor;
-import fr.utbm.core.entity.Station;
 import fr.utbm.core.service.SensorService;
 import fr.utbm.core.service.StationService;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -43,6 +41,9 @@ public class SensorListServlet extends HttpServlet {
         SensorService ms = new SensorService();
         List<Sensor> sensors= ms.getAllSensorFromStationId(id);
         request.setAttribute("sensors", sensors);
+        StationService ss = new StationService();
+        String station = ss.getStationById(id).getLabel();
+        request.setAttribute("station", station);
         RequestDispatcher dis=request.getRequestDispatcher("SensorList.jsp");
         dis.forward(request,response);
         

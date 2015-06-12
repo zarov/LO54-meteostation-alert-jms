@@ -5,12 +5,10 @@
  */
 package fr.utbm.web.servlet;
 
-import fr.utbm.core.entity.Station;
 import fr.utbm.core.entity.Trigger;
-import fr.utbm.core.service.StationService;
+import fr.utbm.core.service.SensorService;
 import fr.utbm.core.service.TriggerService;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -43,6 +41,8 @@ public class TriggerListServlet extends HttpServlet {
         TriggerService ts = new TriggerService();
         List<Trigger> triggers= ts.getAllTriggersFromSensorId(id);
         request.setAttribute("triggers", triggers);
+        SensorService ms = new SensorService();
+        request.setAttribute("sensor", ms.getSensorById(id).getLabel());
         RequestDispatcher dis=request.getRequestDispatcher("TriggerList.jsp");
         dis.forward(request,response);
     }

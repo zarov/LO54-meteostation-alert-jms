@@ -1,0 +1,309 @@
+From b4ea9539637bca0f01de2dcf48af748e48e2589f Mon Sep 17 00:00:00 2001
+From: Adrien Berthet <berthet.a@gmail.com>
+Date: Fri, 12 Jun 2015 14:46:14 +0200
+Subject: [PATCH] Add CSS to the interface
+
+---
+ .../fr/utbm/web/servlet/SensorListServlet.java     |    5 +-
+ .../fr/utbm/web/servlet/TriggerListServlet.java    |    6 +--
+ web/src/main/webapp/Confirmation.html              |   17 -------
+ web/src/main/webapp/SensorList.jsp                 |   23 ++++++---
+ web/src/main/webapp/StationList.jsp                |   23 ++++++---
+ web/src/main/webapp/TriggerList.jsp                |   42 ++++++++++------
+ web/src/main/webapp/addTriggerForm.jsp             |   52 ++++++++++++--------
+ web/src/main/webapp/redirect.jsp                   |    9 ----
+ 8 files changed, 95 insertions(+), 82 deletions(-)
+ delete mode 100644 web/src/main/webapp/Confirmation.html
+ delete mode 100644 web/src/main/webapp/redirect.jsp
+
+diff --git a/web/src/main/java/fr/utbm/web/servlet/SensorListServlet.java b/web/src/main/java/fr/utbm/web/servlet/SensorListServlet.java
+index 044e7b2..3122d9c 100644
+--- a/web/src/main/java/fr/utbm/web/servlet/SensorListServlet.java
++++ b/web/src/main/java/fr/utbm/web/servlet/SensorListServlet.java
+@@ -6,11 +6,9 @@
+ package fr.utbm.web.servlet;
+ 
+ import fr.utbm.core.entity.Sensor;
+-import fr.utbm.core.entity.Station;
+ import fr.utbm.core.service.SensorService;
+ import fr.utbm.core.service.StationService;
+ import java.io.IOException;
+-import java.io.PrintWriter;
+ import java.util.List;
+ import javax.servlet.RequestDispatcher;
+ import javax.servlet.ServletException;
+@@ -43,6 +41,9 @@ public class SensorListServlet extends HttpServlet {
+         SensorService ms = new SensorService();
+         List<Sensor> sensors= ms.getAllSensorFromStationId(id);
+         request.setAttribute("sensors", sensors);
++        StationService ss = new StationService();
++        String station = ss.getStationById(id).getLabel();
++        request.setAttribute("station", station);
+         RequestDispatcher dis=request.getRequestDispatcher("SensorList.jsp");
+         dis.forward(request,response);
+         
+diff --git a/web/src/main/java/fr/utbm/web/servlet/TriggerListServlet.java b/web/src/main/java/fr/utbm/web/servlet/TriggerListServlet.java
+index d7dbb88..fc6aec6 100644
+--- a/web/src/main/java/fr/utbm/web/servlet/TriggerListServlet.java
++++ b/web/src/main/java/fr/utbm/web/servlet/TriggerListServlet.java
+@@ -5,12 +5,10 @@
+  */
+ package fr.utbm.web.servlet;
+ 
+-import fr.utbm.core.entity.Station;
+ import fr.utbm.core.entity.Trigger;
+-import fr.utbm.core.service.StationService;
++import fr.utbm.core.service.SensorService;
+ import fr.utbm.core.service.TriggerService;
+ import java.io.IOException;
+-import java.io.PrintWriter;
+ import java.util.List;
+ import javax.servlet.RequestDispatcher;
+ import javax.servlet.ServletException;
+@@ -43,6 +41,8 @@ public class TriggerListServlet extends HttpServlet {
+         TriggerService ts = new TriggerService();
+         List<Trigger> triggers= ts.getAllTriggersFromSensorId(id);
+         request.setAttribute("triggers", triggers);
++        SensorService ms = new SensorService();
++        request.setAttribute("sensor", ms.getSensorById(id).getLabel());
+         RequestDispatcher dis=request.getRequestDispatcher("TriggerList.jsp");
+         dis.forward(request,response);
+     }
+diff --git a/web/src/main/webapp/Confirmation.html b/web/src/main/webapp/Confirmation.html
+deleted file mode 100644
+index bb9fb38..0000000
+--- a/web/src/main/webapp/Confirmation.html
++++ /dev/null
+@@ -1,17 +0,0 @@
+-<!DOCTYPE html>
+-<!--
+-To change this license header, choose License Headers in Project Properties.
+-To change this template file, choose Tools | Templates
+-and open the template in the editor.
+--->
+-<html>
+-    <head>
+-        <title>Success</title>
+-        <meta charset="UTF-8">
+-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+-    </head>
+-    <body>
+-        <div>Trigger added</div>
+-        <a href="/projet/StationListServlet">Return to stations</a>
+-    </body>
+-</html>
+diff --git a/web/src/main/webapp/SensorList.jsp b/web/src/main/webapp/SensorList.jsp
+index 24d02bf..35e5a05 100644
+--- a/web/src/main/webapp/SensorList.jsp
++++ b/web/src/main/webapp/SensorList.jsp
+@@ -11,18 +11,25 @@
+ <html>
+     <head>
+         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
++        <!-- Materialize -->
++        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/css/materialize.min.css">
++        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
++        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/js/materialize.min.js"></script>
+         <title>Sensors</title>
+     </head>
+     <body>
+-        <h1>Sensors</h1>
+-            <ul>
++        <div class="container">
++            <h1>Sensors for ${station}</h1>
++            <table class="collection">
+                 <c:forEach items="${sensors}" var="sensor">
+-                    <li>${sensor.label}
+-                        <a href="/projet/TriggerListServlet?id=${sensor.id}">Display Triggers</a>
+-                    </li>
++                    <tr class="collection-item">
++                        <td>${sensor.label}</td>
++                        <td><a href="/projet/TriggerListServlet?id=${sensor.id}" class="waves-effect waves-light btn blue">Display Triggers</a></td>
++                    </tr>
+                 </c:forEach>    
+-            </ul>
+-        <br>
+-        <a href="/projet/StationListServlet">Return to stations</a>
++            </table>
++            <br>
++            <a href="/projet/StationListServlet" class="waves-effect waves-light btn">Return to stations</a>
++        </div>
+     </body>
+ </html>
+diff --git a/web/src/main/webapp/StationList.jsp b/web/src/main/webapp/StationList.jsp
+index 76c662d..d10c5d3 100644
+--- a/web/src/main/webapp/StationList.jsp
++++ b/web/src/main/webapp/StationList.jsp
+@@ -11,18 +11,25 @@
+ <html>
+     <head>
+         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
++        <!-- Materialize -->
++        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/css/materialize.min.css">
++        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
++        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/js/materialize.min.js"></script>
+         <title>Stations</title>
+     </head>
+     <body>
+-        <h1>Stations</h1>
+-            <ul>
++        <div class="container">
++            <h1>Stations</h1>
++            <table class="collection">
+                 <c:forEach items="${stations}" var="station">
+-                    <li>${station.label}
+-                        <a href="/projet/SensorListServlet?id=${station.id}">Display sensors</a>
+-                    </li>
++                    <tr class="collection-item">
++                        <td>${station.label}</td>
++                        <td><a href="/projet/SensorListServlet?id=${station.id}" class="waves-effect waves-light btn blue">Display sensors</a></td>
++                    </tr>
+                 </c:forEach>    
+-            </ul>
+-        <br>
+-        <a href="/projet/AlertHisListServlet">See alerts historic</a>
++            </table>
++            <br>
++            <a href="/projet/AlertHisListServlet" class="waves-effect waves-light btn">See alerts historic</a>
++        </div>
+     </body>
+ </html>
+diff --git a/web/src/main/webapp/TriggerList.jsp b/web/src/main/webapp/TriggerList.jsp
+index 016332e..4cab0aa 100644
+--- a/web/src/main/webapp/TriggerList.jsp
++++ b/web/src/main/webapp/TriggerList.jsp
+@@ -10,23 +10,35 @@
+ <html>
+     <head>
+         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
++        <!-- Materialize -->
++        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/css/materialize.min.css">
++        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
++        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/js/materialize.min.js"></script>
+         <title>Triggers</title>
+     </head>
+     <body>
+-        <h1>Triggers</h1>
+-        <c:forEach items="${triggers}" var="trigger">
+-            <ul>
+-                <li>
+-                    Trigger id: ${trigger.id}
+-                    <a href="/projet/DeleteTriggerServlet?id=${trigger.id}&sensorId=${triggers[0].sensor.id}">Delete Trigger</a>
+-                </li>
+-                <li>High trigger: ${trigger.trigHigh}</li>
+-                <li>Low trigger: ${trigger.trigLow}</li>
+-                <li>Edge trigger: ${trigger.trigEdge}</li>
+-            </ul>
+-        </c:forEach>
+-        <a href="/projet/AddTriggerFormServlet?sensorId=${triggers[0].sensor.id}">Add a new Trigger to this sensor</a>
+-        <br>
+-        <a href="/projet/StationListServlet">Return to stations</a>
++        <div class="container">
++            <h1>Triggers for ${sensor}</h1>
++            <table class="collection">
++            <c:forEach items="${triggers}" var="trigger">
++                <tr class="collection-item">
++                    <td>
++                        <ul>
++                            <li>Trigger id: ${trigger.id}</li>
++                            <li>High trigger: ${trigger.trigHigh}</li>
++                            <li>Low trigger: ${trigger.trigLow}</li>
++                            <li>Edge trigger: ${trigger.trigEdge}</li>
++                            <li>
++                                <a href="/projet/DeleteTriggerServlet?id=${trigger.id}&sensorId=${triggers[0].sensor.id}" class="waves-effect waves-light btn red">Delete Trigger</a>
++                            </li>
++                        </ul>
++                    </td>
++            </c:forEach>
++            </table>
++            <br>
++            <a href="/projet/AddTriggerFormServlet?sensorId=${triggers[0].sensor.id}" class="waves-effect waves-light btn blue">Add a new Trigger to this sensor</a>
++            <br>
++            <a href="/projet/StationListServlet" class="waves-effect waves-light btn">Return to stations</a>
++        </div>
+     </body>
+ </html>
+diff --git a/web/src/main/webapp/addTriggerForm.jsp b/web/src/main/webapp/addTriggerForm.jsp
+index de72f3e..767f704 100644
+--- a/web/src/main/webapp/addTriggerForm.jsp
++++ b/web/src/main/webapp/addTriggerForm.jsp
+@@ -11,29 +11,41 @@
+ <html>
+     <head>
+         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
++        <!-- Materialize -->
++        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/css/materialize.min.css">
++        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
++        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/js/materialize.min.js"></script>
+         <title>Add Trigger</title>
+     </head>
+     <body>
+-        <h1>Add Trigger</h1>
+-        <form action="/projet/AddTriggerServlet">
+-            Trigger High<br>
+-            <input type="text" name="triggerHigh"><br>
+-            Trigger Low:<br>
+-            <input type="text" name="triggerLow"><br>
+-            <br>
+-            Trigger Edge<br>
+-            <input type="text" name="triggerEdge"><br>
+-            <br>
+-            Alert<br>
+-            <select id="selectedAlert" name="selectedAlert">
+-                <c:forEach var="alert" items="${alerts}">
+-                    <option value="${alert.id}">${alert.label}</option>
+-                </c:forEach>
+-            </select>
+-            <br>
+-            <input type="hidden" name="sensor" value="<%=request.getParameter("sensorId")%>" />
+-            <input type="submit" value="Submit">
+-        </form> 
++        <div class="container">
++            <h1>Add Trigger</h1>
++            <form action="/projet/AddTriggerServlet">
++                <div class="input-field">
++                    <label for="triggerHigh">Trigger High</label>
++                    <input type="text" name="triggerHigh">
++                </div>
++                <div class="input-field">
++                    <label for="triggerLow">Trigger Low</label>
++                    <input type="text" name="triggerLow">
++                </div>
++                <div class="input-field">
++                    <label for="triggerEdge">Trigger Edge</label>
++                    <input type="text" name="triggerEdge"><br>
++                </div>
++                <div class="input-field">
++                    <label>Alert</label>
++                    <br>
++                    <select id="selectedAlert" name="selectedAlert" class="browser-default" style="margin-top: 30px;">
++                        <c:forEach var="alert" items="${alerts}">
++                            <option value="${alert.id}">${alert.label}</option>
++                        </c:forEach>
++                    </select>
++                </div>
++                <input type="hidden" name="sensor" value="<%=request.getParameter("sensorId")%>" />
++                <button type="submit" value="Submit" class="waves-effect waves-light btn" style="margin-top: 50px;">Submit</button>
++            </form> 
++        </div>
+     </body>
+ </html>
+ 
+diff --git a/web/src/main/webapp/redirect.jsp b/web/src/main/webapp/redirect.jsp
+deleted file mode 100644
+index 03970eb..0000000
+--- a/web/src/main/webapp/redirect.jsp
++++ /dev/null
+@@ -1,9 +0,0 @@
+-<%--
+-Views should be stored under the WEB-INF folder so that
+-they are not accessible except through controller process.
+-
+-This JSP is here to provide a redirect to the dispatcher
+-servlet but should be the only JSP outside of WEB-INF.
+---%>
+-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+-<% response.sendRedirect("index.htm"); %>
+-- 
+1.7.10.4
+
