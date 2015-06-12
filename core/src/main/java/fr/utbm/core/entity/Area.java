@@ -2,22 +2,17 @@ package fr.utbm.core.entity;
 
 import java.io.Serializable;
 
-
-//@Entity
-//@Table(name = "area")
+/**
+ *
+ * @author Adrien Berthet <adrien.berthet@utbm.fr>
+ * @package fr.utbm.core.entity
+ */
 public class Area implements Serializable {
 
 	private static final long serialVersionUID = -3571500543876062353L;
 
-	//@Id
-	//@GeneratedValue(strategy = GenerationType.AUTO)
-	//@Column(name = "Are_Id")
 	private int id;
-
-
-	//@Column(name = "Are_Label", length = 45)
 	private String label;
-	//@Column(name = "Are_Road", length = 45)
 	private String road;
 
 	/**
@@ -56,8 +51,8 @@ public class Area implements Serializable {
 	public int getId() {
 		return id;
 	}
-        
-        public void setId(int id) {
-            this.id = id;
-        }
+
+	public void setId(int id) {
+		this.id = id;
+	}
 }

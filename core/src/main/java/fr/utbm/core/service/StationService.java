@@ -1,13 +1,14 @@
 package fr.utbm.core.service;
 
-import fr.utbm.core.dao.StationDao;
-import fr.utbm.core.entity.Area;
-import fr.utbm.core.entity.Station;
 import java.util.Date;
 import java.util.List;
 
+import fr.utbm.core.dao.StationDao;
+import fr.utbm.core.entity.Area;
+import fr.utbm.core.entity.Station;
+
 /**
- * @author zarov
+ * @author Adrien Berthet <adrien.berthet@utbm.fr>
  * @package fr.utbm.core.service
  */
 public class StationService {
@@ -42,14 +43,14 @@ public class StationService {
 		StationDao dao = new StationDao();
 		dao.deleteStationById(id);
 	}
-        
-        public List<Station>getAllStations(){
-            StationDao dao = new StationDao();
-            return dao.getAllStations();
-        }
 
-        public List<Station> getAllStationsByAreaId(int id) {
-            StationDao dao = new StationDao();
-            return dao.getAllStationsByAreaId(id);
-        }
+	public List<Station> getAllStations() {
+		StationDao dao = new StationDao();
+		return dao.getAllStations();
+	}
+
+	public List<Station> getAllStationsByAreaId(int id) {
+		StationDao dao = new StationDao();
+		return dao.getAllStationsByAreaId(id);
+	}
 }

@@ -3,6 +3,11 @@ package fr.utbm.core.entity;
 import java.io.Serializable;
 import java.util.Set;
 
+/**
+ * 
+ * @author Adrien Berthet <adrien.berthet@utbm.fr>
+ * @package fr.utbm.core.entity
+ */
 public class Sensor implements Serializable {
 
 	private static final long serialVersionUID = 4472531906645355642L;
@@ -12,7 +17,7 @@ public class Sensor implements Serializable {
 
 	private Set<Temperature> temperatures;
 	private Set<Trigger> triggers;
-    private Station station;
+	private Station station;
 
 	public Sensor() {
 	}
@@ -43,11 +48,9 @@ public class Sensor implements Serializable {
 		return id;
 	}
 
-        public void setId(int id) {
-            this.id = id;
-        }
-
-        
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	/**
 	 * @return the temperatures
@@ -79,13 +82,12 @@ public class Sensor implements Serializable {
 		this.triggers = triggers;
 	}
 
-        public Station getStation() {
-            return station;
-        }
+	public Station getStation() {
+		return station;
+	}
 
-        public void setStation(Station station) {
-            this.station = station;
-        }
-        
-        
+	public void setStation(Station station) {
+		this.station = station;
+	}
+
 }

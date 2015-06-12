@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package fr.utbm.core.entity;
 
 import java.io.Serializable;
@@ -12,41 +7,35 @@ import java.io.Serializable;
  * @author Julien
  */
 
-//@Entity
-//@Table(name="alert")
 public class Alert implements Serializable {
-    
-    //@Id
-    //@Column(name = "Alr_code")
-    private String id;
-    //@Column(name = "Alr_Label")
-    private String label;
-    //@Column(name = "Alr_Description")
-    private String description;
+	private static final long serialVersionUID = -2138583970512839325L;
 
-    public String getId() {
-        return id;
-    }
+	private String id;
+	private String label;
+	private String description;
 
-    public void setId(String id) {
-        this.id = id;
-    }
+	public String getId() {
+		return id;
+	}
 
-    public String getLabel() {
-        return label;
-    }
+	public void setId(String id) {
+		this.id = id;
+	}
 
-    public void setLabel(String label) {
-        this.label = label;
-    }
+	public String getLabel() {
+		return label;
+	}
 
-    public String getDescription() {
-        return description;
-    }
+	public void setLabel(String label) {
+		this.label = label;
+	}
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-    
-    
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
 }

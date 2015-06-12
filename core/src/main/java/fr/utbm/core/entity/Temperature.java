@@ -3,16 +3,21 @@ package fr.utbm.core.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+/**
+ *
+ * @author Adrien Berthet <adrien.berthet@utbm.fr>
+ * @package fr.utbm.core.entity
+ */
 public class Temperature implements Serializable {
 
 	private static final long serialVersionUID = -6599972396675661321L;
 
 	private int id;
 	private float value;
-        
+
 	private Date date;
-        
-        private Sensor sensor;
+
+	private Sensor sensor;
 
 	public Temperature() {
 	}
@@ -59,15 +64,15 @@ public class Temperature implements Serializable {
 		return id;
 	}
 
-        public void setId(int id) {
-            this.id = id;
-        }
-        
-        public Sensor getSensor() {
-            return sensor;
-        }
+	public void setId(int id) {
+		this.id = id;
+	}
 
-        public void setSensor(Sensor sensor) {
-            this.sensor = sensor;
-        }
+	public Sensor getSensor() {
+		return sensor;
+	}
+
+	public void setSensor(Sensor sensor) {
+		this.sensor = sensor;
+	}
 }

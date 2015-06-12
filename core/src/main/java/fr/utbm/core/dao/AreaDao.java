@@ -7,7 +7,7 @@ import fr.utbm.core.entity.Area;
 import fr.utbm.core.tools.HibernateUtil;
 
 /**
- * @author zarov
+ * @author Adrien Berthet <adrien.berthet@utbm.fr>
  * @package fr.utbm.core.dao
  */
 public class AreaDao {

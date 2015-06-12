@@ -1,11 +1,10 @@
 package fr.utbm.core.service;
 
-
 import fr.utbm.core.dao.AreaDao;
 import fr.utbm.core.entity.Area;
 
 /**
- * @author zarov
+ * @author Adrien Berthet <adrien.berthet@utbm.fr>
  * @package fr.utbm.core.service
  */
 public class AreaService {

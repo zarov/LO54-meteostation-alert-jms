@@ -3,8 +3,11 @@ package fr.utbm.core.entity;
 import java.io.Serializable;
 import java.util.Date;
 
-//@Entity
-//@Table(name = "station")
+/**
+ *
+ * @author Adrien Berthet <adrien.berthet@utbm.fr>
+ * @package fr.utbm.core.entity
+ */
 public class Station implements Serializable {
 
 	private static final long serialVersionUID = 6132454940793990497L;
@@ -67,10 +70,10 @@ public class Station implements Serializable {
 	public void setValid(boolean valid) {
 		this.valid = valid;
 	}
-        
-        public boolean isValid() {
-            return valid;
-        }
+
+	public boolean isValid() {
+		return valid;
+	}
 
 	/**
 	 * @return the id
@@ -78,8 +81,8 @@ public class Station implements Serializable {
 	public int getId() {
 		return id;
 	}
-        
-        public void setId(int id) {
-            this.id = id;
-        }
+
+	public void setId(int id) {
+		this.id = id;
+	}
 }
