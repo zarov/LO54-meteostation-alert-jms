@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author java
+ * @author Julien
  */
 @WebServlet(name = "SensorListServlet", urlPatterns = {"/SensorListServlet"})
 public class SensorListServlet extends HttpServlet {

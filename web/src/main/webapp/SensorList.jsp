@@ -1,7 +1,7 @@
 <%-- 
     Document   : SensorList
     Created on : 7 juin 2015, 14:33:55
-    Author     : java
+    Author     : Julien
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

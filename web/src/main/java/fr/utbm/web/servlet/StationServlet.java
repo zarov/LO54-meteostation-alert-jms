@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author java
+ * @author Julien
  */
 @WebServlet(name = "StationServlet", urlPatterns = {"/StationServlet"})
 public class StationServlet extends HttpServlet {

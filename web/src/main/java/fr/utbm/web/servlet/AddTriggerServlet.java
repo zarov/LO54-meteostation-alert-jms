@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author java
+ * @author Julien
  */
 @WebServlet(name = "AddTriggerServlet", urlPatterns = {"/AddTriggerServlet"})
 public class AddTriggerServlet extends HttpServlet {

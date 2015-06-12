@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author java
+ * @author Julien
  */
 @WebServlet(name = "TriggerListServlet", urlPatterns = {"/TriggerListServlet"})
 public class TriggerListServlet extends HttpServlet {

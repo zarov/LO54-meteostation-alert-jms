@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author java
+ * @author Julien
  */
 @WebServlet(name = "DeleteTriggerServlet", urlPatterns = {"/DeleteTriggerServlet"})
 public class DeleteTriggerServlet extends HttpServlet {
