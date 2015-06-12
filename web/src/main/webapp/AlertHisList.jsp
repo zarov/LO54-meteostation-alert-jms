@@ -10,16 +10,20 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <!-- Materialize -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/css/materialize.min.css">
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/js/materialize.min.js"></script>
         <title>Alerts</title>
     </head>
     <body>
         <h1>Alerts</h1>
-            <ul>
+            <table class="collection">
                 <c:forEach items="${alerts}" var="alert">
-                    <li>${alert.date}</li>
+                    <tr class="collection-item"><td>${alert.date}</td></tr>
                 </c:forEach>
-            </ul>
+            </table>
         <br>
-        <a href="/projet/StationListServlet">Return to stations</a>
+        <a href="/projet/StationListServlet" class="waves-effect waves-light btn">Return to stations</a>
     </body>
 </html>

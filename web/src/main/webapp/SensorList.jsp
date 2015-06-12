@@ -26,7 +26,7 @@
                         <td>${sensor.label}</td>
                         <td><a href="/projet/TriggerListServlet?id=${sensor.id}" class="waves-effect waves-light btn blue">Display Triggers</a></td>
                     </tr>
-                </c:forEach>    
+                </c:forEach>
             </table>
             <br>
             <a href="/projet/StationListServlet" class="waves-effect waves-light btn">Return to stations</a>
