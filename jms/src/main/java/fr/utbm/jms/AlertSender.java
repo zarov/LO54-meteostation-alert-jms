@@ -44,10 +44,15 @@ public class AlertSender {
             session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
             destination = session.createQueue("SAMPLEQUEUE");
             producer = session.createProducer(destination);
+            
             TextMessage message = session.createTextMessage();
             message.setText(text);
             producer.send(message);
             System.out.println("Sent: \n" + message.getText());
+            
+            producer.close();
+            session.close();
+            connection.close();
         } catch (JMSException e) {
             e.printStackTrace(System.out);
         }

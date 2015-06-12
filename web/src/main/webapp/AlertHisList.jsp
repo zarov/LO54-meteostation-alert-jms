@@ -16,8 +16,8 @@
         <h1>Alerts</h1>
             <ul>
                 <c:forEach items="${alerts}" var="alert">
-                    <li>${alert.date}</li>   
-                </c:forEach>    
+                    <li>${alert.date}</li>
+                </c:forEach>
             </ul>
         <br>
         <a href="/projet/StationListServlet">Return to stations</a>
